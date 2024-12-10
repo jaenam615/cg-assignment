@@ -12,12 +12,40 @@ content-type: application/json
   "is_ignore_workhour": false
 }
 
-### 2021-05-08 시간확인
+### 2021-05-09 SUN 시간확인
 POST http://localhost:3000/getTimeSlots
 content-type: application/json
 
 {
-  "start_day_identifier": "20210508",
+  "start_day_identifier": "20210509",
+  "timezone_identifier": "Asia/Seoul",
+  "service_duration": 3600,
+  "days": 3,
+  "timeslot_interval": 1800,
+  "is_ignore_schedule": false,
+  "is_ignore_workhour": false
+}
+
+### 2021-05-10 MON 시간확인
+POST http://localhost:3000/getTimeSlots
+content-type: application/json
+
+{
+  "start_day_identifier": "20210510",
+  "timezone_identifier": "Asia/Seoul",
+  "service_duration": 3600,
+  "days": 1,
+  "timeslot_interval": 1800,
+  "is_ignore_schedule": false,
+  "is_ignore_workhour": false
+}
+
+### 2021-05-11 TUE 시간확인
+POST http://localhost:3000/getTimeSlots
+content-type: application/json
+
+{
+  "start_day_identifier": "20210509",
   "timezone_identifier": "Asia/Seoul",
   "service_duration": 3600,
   "days": 1,
