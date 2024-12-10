@@ -72,7 +72,7 @@ export class ReservationService {
 
       //요구사항 step2
       //event가 있는 시간대는 빼고 반환
-      if (!is_ignore_schedule) {
+      if (!is_ignore_schedule && timeslots.length > 0) {
         timeslots = this.filterEvents(timeslots, events);
       }
 
