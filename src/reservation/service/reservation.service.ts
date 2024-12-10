@@ -50,25 +50,18 @@ export class ReservationService {
       const openAt: number = currentDay.add(workhour.open_interval, 'second').unix();
       const closedAt: number = currentDay.add(workhour.close_interval, 'second').unix();
 
-      // 10:00 ~ 20:00
-      // 30분 단위
-      // 1시간 소요
-      // 10:00 / 10:30 / 11:00 / 11:30 / ~ / 19:00
-      // 21:00
-
       // 요구사항 step1 & 3
       let timeslots: Timeslot[];
-      // workhour가 존재하지 않거나, day off이거나, 영업 시작 시간과 종료 시간의 차이가 서비스를 하기 충분하지 않은 경우 
       if (is_ignore_workhour) {
         timeslots = this.makeSlots(currentDay.unix(), currentDay.unix() + 86400, timeslot_interval, service_duration)
       } else {
+        // workhour가 존재하지 않거나, day off이거나, 영업 시작 시간과 종료 시간의 차이가 서비스를 하기 충분하지 않은 경우 
         if (!workhour || workhour.is_day_off || openAt + service_duration > closedAt) {
           timeslots = []
         } else {
           timeslots = this.makeSlots(openAt, closedAt, timeslot_interval, service_duration)
         }
       }
-
 
       //요구사항 step2
       //event가 있는 시간대는 빼고 반환
@@ -85,7 +78,6 @@ export class ReservationService {
 
       result.push(daySchedule)
     }
-
 
     return result;
   }
